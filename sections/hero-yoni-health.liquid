@@ -1,0 +1,47 @@
+<section class="yoni-hero">
+  <div class="page-width">
+    <h1>{{ section.settings.heading }}</h1>
+
+    <p>{{ section.settings.subheading }}</p>
+
+    <a href="{{ section.settings.button_link }}" class="button">
+      {{ section.settings.button_label }}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Yoni Health Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Natural Feminine Wellness"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Support your wellness journey with trusted natural products."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Yoni Health Hero"
+    }
+  ]
+}
+{% endschema %}
