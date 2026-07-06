@@ -1,0 +1,53 @@
+/* ==========================================================
+   Skylight Digital Framework (SDF)
+   Version: 1.0
+   ----------------------------------------------------------
+   Core Design System
+   ========================================================== */
+
+:root {
+
+  /* ==========================
+     Brand Colours
+     ========================== */
+
+  --sd-color-primary: #5C2E4A;
+  --sd-color-secondary: #8FA88A;
+  --sd-color-accent: #C8A96A;
+
+  --sd-color-background: #F9F6F2;
+
+  --sd-color-text: #2F2F2F;
+
+  --sd-color-white: #FFFFFF;
+
+  /* ==========================
+     Border Radius
+     ========================== */
+
+  --sd-radius-small:8px;
+  --sd-radius-medium:14px;
+  --sd-radius-large:24px;
+
+  /* ==========================
+     Spacing
+     ========================== */
+
+  --sd-space-xs:8px;
+  --sd-space-sm:16px;
+  --sd-space-md:24px;
+  --sd-space-lg:40px;
+  --sd-space-xl:64px;
+  --sd-space-xxl:96px;
+
+  /* ==========================
+     Shadows
+     ========================== */
+
+  --sd-shadow-small:
+      0 8px 18px rgba(0,0,0,.08);
+
+  --sd-shadow-large:
+      0 25px 60px rgba(0,0,0,.12);
+
+}
