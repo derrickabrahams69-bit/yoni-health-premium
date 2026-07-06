@@ -1,0 +1,12 @@
+{% liquid
+  assign button_text = text | default: "Learn More"
+  assign button_url = url | default: "#"
+  assign button_style = style | default: "primary"
+%}
+
+<a
+  href="{{ button_url }}"
+  class="sd-btn sd-btn--{{ button_style }}"
+>
+  {{ button_text }}
+</a>

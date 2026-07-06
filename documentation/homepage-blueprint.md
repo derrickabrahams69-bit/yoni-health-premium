@@ -67,3 +67,20 @@ Homepage Blueprint
 ☐ Planning
 ☐ In Development
 ☐ Complete
+## Framework Progress
+
+### Completed
+
+- [x] Development environment
+- [x] Git & GitHub
+- [x] Shopify CLI
+- [x] Local theme synchronization
+- [x] SDF Design Tokens (`sd-framework.css`)
+- [x] Framework loaded into theme
+
+### Next
+
+- [ ] SDF Button System
+- [ ] SDF Hero Component
+- [ ] Trust Strip
+- [ ] Benefits

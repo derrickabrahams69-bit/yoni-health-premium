@@ -1,0 +1,58 @@
+/* =====================================
+   Skylight Digital Components
+   Version 1.0
+===================================== */
+
+.sd-btn{
+
+display:inline-flex;
+align-items:center;
+justify-content:center;
+
+padding:14px 30px;
+
+border-radius:var(--sd-radius-medium);
+
+text-decoration:none;
+
+font-weight:600;
+
+transition:.3s ease;
+
+cursor:pointer;
+
+font-family:inherit;
+
+}
+
+.sd-btn--primary{
+
+background:var(--sd-color-primary);
+
+color:white;
+
+}
+
+.sd-btn--primary:hover{
+
+opacity:.9;
+
+}
+
+.sd-btn--secondary{
+
+background:transparent;
+
+border:2px solid var(--sd-color-primary);
+
+color:var(--sd-color-primary);
+
+}
+
+.sd-btn--secondary:hover{
+
+background:var(--sd-color-primary);
+
+color:white;
+
+}
