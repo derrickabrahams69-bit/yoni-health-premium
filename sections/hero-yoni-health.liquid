@@ -1,19 +1,65 @@
-<section class="yoni-hero">
-  <div class="page-width">
-    <h1>{{ section.settings.heading }}</h1>
+<section
+class="yh-hero"
+style="
+background-image:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+url({{ section.settings.hero_image | image_url: width: 2200 }});
+height:{{ section.settings.hero_height }};
+">
 
-    <p>{{ section.settings.subheading }}</p>
+<div class="page-width">
 
-    <a href="{{ section.settings.button_link }}" class="button">
-      {{ section.settings.button_label }}
-    </a>
-  </div>
+<div class="yh-hero__content {{ section.settings.content_alignment }}">
+
+<span class="yh-eyebrow">
+{{ section.settings.eyebrow }}
+</span>
+
+<h1>
+{{ section.settings.heading }}
+</h1>
+
+<p>
+{{ section.settings.subheading }}
+</p>
+
+<div class="yh-buttons">
+
+<a
+href="{{ section.settings.button_link }}"
+class="sd-button">
+{{ section.settings.button_label }}
+</a>
+
+<a
+href="{{ section.settings.secondary_button_link }}"
+class="sd-button sd-button--outline">
+{{ section.settings.secondary_button }}
+</a>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
 {% schema %}
 {
   "name": "Yoni Health Hero",
   "settings": [
+   {
+  "type": "image_picker",
+  "id": "hero_image",
+  "label": "Hero Background Image"
+},
+{
+  "type": "text",
+  "id": "eyebrow",
+  "label": "Eyebrow Text",
+  "default": "PREMIUM NATURAL WELLNESS"
+},
     {
       "type": "text",
       "id": "heading",
@@ -36,7 +82,64 @@
       "type": "url",
       "id": "button_link",
       "label": "Button Link"
+    },
+{
+  "type": "text",
+  "id": "secondary_button",
+  "label": "Secondary Button",
+  "default": "Learn More"
+},
+{
+  "type": "url",
+  "id": "secondary_button_link",
+  "label": "Secondary Button Link"
+},
+{
+  "type": "range",
+  "id": "overlay_opacity",
+  "label": "Overlay Opacity",
+  "min": 0,
+  "max": 90,
+  "step": 5,
+  "unit": "%",
+  "default": 45
+},
+{
+  "type": "select",
+  "id": "hero_height",
+  "label": "Hero Height",
+  "default": "90vh",
+  "options": [
+    {
+      "value": "70vh",
+      "label": "Small"
+    },
+    {
+      "value": "90vh",
+      "label": "Medium"
+    },
+    {
+      "value": "100vh",
+      "label": "Full Screen"
     }
+  ]
+},
+{
+  "type": "select",
+  "id": "content_alignment",
+  "label": "Content Alignment",
+  "default": "left",
+  "options": [
+    {
+      "value": "left",
+      "label": "Left"
+    },
+    {
+      "value": "center",
+      "label": "Center"
+    }
+  ]
+}
   ],
   "presets": [
     {
