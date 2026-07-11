@@ -1,58 +1,132 @@
 <section
-class="yh-hero"
-style="
-background-image:
-linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
-url({{ section.settings.hero_image | image_url: width: 2200 }});
-height:{{ section.settings.hero_height }};
-">
+  class="yh-hero yh-hero--desktop-image-{{ section.settings.desktop_image_position }} yh-hero--mobile-image-{{ section.settings.mobile_image_position }}"
+  style="
+    --yh-hero-height: {{ section.settings.hero_height }};
+    --yh-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  "
+>
+  {% if section.settings.hero_image != blank %}
+    <picture class="yh-hero__picture">
+      {% if section.settings.mobile_hero_image != blank %}
+        <source
+          media="(max-width: 749px)"
+          srcset="{{ section.settings.mobile_hero_image | image_url: width: 900 }}"
+        >
+      {% endif %}
 
-<div class="page-width">
+      {{
+        section.settings.hero_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'yh-hero__image',
+          loading: 'eager',
+          fetchpriority: 'high',
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '100vw'
+      }}
+    </picture>
+  {% endif %}
 
-<div class="yh-hero__content {{ section.settings.content_alignment }}">
+  <div class="yh-hero__overlay yh-hero__overlay--{{ section.settings.overlay_style }}"></div>
 
-<span class="yh-eyebrow">
-{{ section.settings.eyebrow }}
-</span>
+  <div class="page-width yh-hero__inner">
+    <div class="yh-hero__content yh-hero__content--{{ section.settings.content_alignment }} yh-hero__content--width-{{ section.settings.content_width }}">
 
-<h1>
-{{ section.settings.heading }}
-</h1>
+      {% if section.settings.eyebrow != blank %}
+        <span class="yh-hero__eyebrow">
+          {{ section.settings.eyebrow }}
+        </span>
+      {% endif %}
 
-<p>
-{{ section.settings.subheading }}
-</p>
+      {% if section.settings.heading != blank %}
+        <h1 class="yh-hero__heading">
+          {{ section.settings.heading }}
+        </h1>
+      {% endif %}
 
-<div class="yh-buttons">
+      {% if section.settings.subheading != blank %}
+        <p class="yh-hero__subheading">
+          {{ section.settings.subheading }}
+        </p>
+      {% endif %}
 
-<a
-href="{{ section.settings.button_link }}"
-class="sd-button">
-{{ section.settings.button_label }}
-</a>
+      <div class="yh-hero__buttons">
+        {% if section.settings.button_label != blank %}
+          <a
+            href="{{ section.settings.button_link | default: routes.all_products_collection_url }}"
+            class="sd-button"
+          >
+            {{ section.settings.button_label }}
+          </a>
+        {% endif %}
 
-<a
-href="{{ section.settings.secondary_button_link }}"
-class="sd-button sd-button--outline">
-{{ section.settings.secondary_button }}
-</a>
+        {% if section.settings.secondary_button != blank %}
+          <a
+            href="{{ section.settings.secondary_button_link | default: routes.root_url }}"
+            class="sd-button sd-button--secondary"
+          >
+            {{ section.settings.secondary_button }}
+          </a>
+        {% endif %}
+      </div>
 
-</div>
-
-</div>
-
-</div>
-
+    </div>
+  </div>
 </section>
 
 {% schema %}
 {
   "name": "Yoni Health Hero",
   "settings": [
-   {
-  "type": "image_picker",
-  "id": "hero_image",
-  "label": "Hero Background Image"
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Desktop Hero Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_hero_image",
+      "label": "Mobile Hero Image"
+    },
+{
+  "type": "select",
+  "id": "desktop_image_position",
+  "label": "Desktop Image Position",
+  "default": "center",
+  "options": [
+    {
+      "value": "left",
+      "label": "Left"
+    },
+    {
+      "value": "center",
+      "label": "Center"
+    },
+    {
+      "value": "right",
+      "label": "Right"
+    }
+  ]
+},
+{
+  "type": "select",
+  "id": "mobile_image_position",
+  "label": "Mobile Image Position",
+  "default": "center",
+  "options": [
+    {
+      "value": "left",
+      "label": "Left"
+    },
+    {
+      "value": "center",
+      "label": "Center"
+    },
+    {
+      "value": "right",
+      "label": "Right"
+    }
+  ]
 },
 {
   "type": "text",
@@ -106,6 +180,26 @@ class="sd-button sd-button--outline">
 },
 {
   "type": "select",
+  "id": "overlay_style",
+  "label": "Overlay Style",
+  "default": "solid",
+  "options": [
+    {
+      "value": "solid",
+      "label": "Solid"
+    },
+    {
+      "value": "gradient-left",
+      "label": "Gradient Left"
+    },
+    {
+      "value": "gradient-right",
+      "label": "Gradient Right"
+    }
+  ]
+},
+{
+  "type": "select",
   "id": "hero_height",
   "label": "Hero Height",
   "default": "90vh",
@@ -127,7 +221,7 @@ class="sd-button sd-button--outline">
 {
   "type": "select",
   "id": "content_alignment",
-  "label": "Content Alignment",
+  "label": "Horizontal Content Position",
   "default": "left",
   "options": [
     {
@@ -137,6 +231,30 @@ class="sd-button sd-button--outline">
     {
       "value": "center",
       "label": "Center"
+    },
+    {
+      "value": "right",
+      "label": "Right"
+    }
+  ]
+},
+{
+  "type": "select",
+  "id": "content_width",
+  "label": "Content Width",
+  "default": "medium",
+  "options": [
+    {
+      "value": "narrow",
+      "label": "Narrow"
+    },
+    {
+      "value": "medium",
+      "label": "Medium"
+    },
+    {
+      "value": "wide",
+      "label": "Wide"
     }
   ]
 }
