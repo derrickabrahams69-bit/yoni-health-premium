@@ -463,9 +463,9 @@ color:white;
     height: auto !important;
   }
 
-  .yoni-hero__media img {
-    object-position: 42% center !important;
-  }
+  .yh-hero--mobile-image-center .yh-hero__image {
+  object-position: center 38% !important;
+}
 
   .yoni-hero__content {
     width: 100%;
@@ -638,59 +638,251 @@ color:white;
    Desktop intentionally unaffected
    ============================================================ */
 
+/* =========================================================
+   YONI HEALTH HERO — MOBILE POSITION FIX
+   TEXT AND BUTTONS ARE INDEPENDENT
+   ========================================================= */
+
 @media screen and (max-width: 749px) {
 
-  .yh-hero__inner {
-    min-height: var(--yh-hero-height) !important;
-    display: flex !important;
-    align-items: flex-start !important;
-    padding-top: 125px !important;
-    padding-bottom: 40px !important;
+  .yh-hero {
+    position: relative !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    overflow: hidden !important;
   }
 
-  .yh-hero__content {
+  .yh-hero__inner {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100svh !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: block !important;
+  }
+
+
+  /* =========================
+     IMAGE
+     ========================= */
+
+  .yh-hero__picture {
+    position: absolute !important;
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    overflow: hidden !important;
+
+    z-index: 0 !important;
+  }
+
+  .yh-hero__picture img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+    object-position: center bottom !important;
+  }
+
+
+  /* =========================
+     CONTENT CANVAS
+     ========================= */
+
+  .yh-hero__content,
+  .yh-hero__content--left,
+  .yh-hero__content--center,
+  .yh-hero__content--right {
+    position: absolute !important;
+
+    inset: 0 !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+
     width: 100% !important;
     max-width: 100% !important;
+    height: 100% !important;
+
     margin: 0 !important;
-    padding-left: 34px !important;
-    padding-right: 22px !important;
-    text-align: left !important;
+    padding: 0 !important;
+
+    display: block !important;
+
+    transform: none !important;
+
+    text-align: center !important;
+
+    z-index: 5 !important;
   }
 
-  .yh-hero__eyebrow {
-    margin-bottom: 20px !important;
-    font-size: 0.72rem !important;
-    line-height: 1.2 !important;
-    letter-spacing: 0.18em !important;
+
+  /* =====================================================
+     COMPLETE TEXT BLOCK
+     EYEBROW + HEADING + SUBHEADING STAY TOGETHER
+     ===================================================== */
+
+  .yh-hero__content > .yh-hero__text {
+    position: absolute !important;
+
+    top: auto !important;
+    right: 24px !important;
+    bottom: 190px !important;
+    left: 24px !important;
+
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: block !important;
+
+    transform: none !important;
+
+    text-align: center !important;
+
+    z-index: 6 !important;
   }
 
-  .yh-hero__heading {
-    max-width: 320px !important;
-    margin-bottom: 22px !important;
-    font-size: clamp(2.7rem, 13vw, 4rem) !important;
-    line-height: 0.98 !important;
-    letter-spacing: -0.035em !important;
+
+  /* EYEBROW */
+
+  .yh-hero__text > .yh-hero__eyebrow {
+    position: static !important;
+
+    display: block !important;
+
+    width: 100% !important;
+
+    margin: 0 0 7px !important;
+    padding: 0 !important;
+
+    font-size: 0.64rem !important;
+    line-height: 1.1 !important;
+    font-weight: 700 !important;
+
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+
+    transform: none !important;
   }
 
-  .yh-hero__subheading {
+
+  /* HEADING */
+
+  .yh-hero__text > .yh-hero__heading {
+    position: static !important;
+
+    display: block !important;
+
+    width: 100% !important;
+    max-width: 330px !important;
+
+    margin: 0 auto 12px !important;
+    padding: 0 !important;
+
+    font-size: 1.95rem !important;
+    line-height: 1.02 !important;
+
+    letter-spacing: -0.025em !important;
+
+    text-align: center !important;
+
+    transform: none !important;
+  }
+
+
+  /* SUBHEADING */
+
+  .yh-hero__text > .yh-hero__subheading {
+    position: static !important;
+
+    display: block !important;
+
+    width: 100% !important;
     max-width: 310px !important;
-    margin-bottom: 28px !important;
-    font-size: 1rem !important;
-    line-height: 1.5 !important;
+
+    margin: 0 auto !important;
+    padding: 0 !important;
+
+    font-size: 0.92rem !important;
+    line-height: 1.4 !important;
+
+    text-align: center !important;
+
+    transform: none !important;
   }
 
-  .yh-hero__buttons {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
-    width: 100% !important;
-    margin-top: 0 !important;
+
+  /* =====================================================
+     BUTTONS
+     FIXED AT BOTTOM — DO NOT MOVE WITH TEXT
+     ===================================================== */
+
+  .yh-hero__content > .yh-hero__buttons {
+    position: absolute !important;
+
+    top: auto !important;
+    right: 24px !important;
+    bottom: 28px !important;
+    left: 24px !important;
+
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    gap: 10px !important;
+
+    transform: none !important;
+
+    z-index: 7 !important;
   }
 
-  .yh-hero__buttons .sd-button {
+
+  .yh-hero__content > .yh-hero__buttons .sd-button {
     width: 100% !important;
-    min-height: 52px !important;
-    padding: 14px 22px !important;
+    min-width: 0 !important;
+    min-height: 50px !important;
+
+    margin: 0 !important;
+    padding: 13px 22px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    text-align: center !important;
+  }
+
+}
+/* ======================================================
+   FINAL MOBILE HERO POSITION
+   ====================================================== */
+
+@media screen and (max-width: 749px) {
+
+  #shopify-section-{{ section.id }} .yh-hero__text {
+    bottom: 240px !important;
+  }
+
+  #shopify-section-{{ section.id }} .yh-hero__buttons {
+    bottom: 24px !important;
   }
 
 }

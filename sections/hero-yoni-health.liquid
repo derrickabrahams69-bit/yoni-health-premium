@@ -32,25 +32,27 @@
   <div class="page-width yh-hero__inner">
     <div class="yh-hero__content yh-hero__content--{{ section.settings.content_alignment }} yh-hero__content--width-{{ section.settings.content_width }}">
 
-      {% if section.settings.eyebrow != blank %}
-        <span class="yh-hero__eyebrow">
-          {{ section.settings.eyebrow }}
-        </span>
-      {% endif %}
+      <div class="yh-hero__text">
+  {% if section.settings.eyebrow != blank %}
+    <span class="yh-hero__eyebrow">
+      {{ section.settings.eyebrow }}
+    </span>
+  {% endif %}
 
-      {% if section.settings.heading != blank %}
-        <h1 class="yh-hero__heading">
-          {{ section.settings.heading }}
-        </h1>
-      {% endif %}
+  {% if section.settings.heading != blank %}
+    <h1 class="yh-hero__heading">
+      {{ section.settings.heading }}
+    </h1>
+  {% endif %}
 
-      {% if section.settings.subheading != blank %}
-        <p class="yh-hero__subheading">
-          {{ section.settings.subheading }}
-        </p>
-      {% endif %}
+  {% if section.settings.subheading != blank %}
+    <p class="yh-hero__subheading">
+      {{ section.settings.subheading }}
+    </p>
+  {% endif %}
+</div>
 
-      <div class="yh-hero__buttons">
+<div class="yh-hero__buttons">
         {% if section.settings.button_label != blank %}
           <a
             href="{{ section.settings.button_link | default: routes.all_products_collection_url }}"
@@ -266,3 +268,246 @@
   ]
 }
 {% endschema %}
+<style>
+@media screen and (max-width: 749px) {
+
+  /* ======================================================
+     YONI HERO — FINAL MOBILE LAYOUT
+     Scoped to this exact section
+     ====================================================== */
+
+  #shopify-section-{{ section.id }} .yh-hero {
+    position: relative !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    overflow: hidden !important;
+  }
+
+  #shopify-section-{{ section.id }} .yh-hero__inner {
+    position: relative !important;
+    display: block !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    height: 100% !important;
+    min-height: 100svh !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+
+  /* ======================================================
+     BACKGROUND IMAGE
+     ====================================================== */
+
+  #shopify-section-{{ section.id }} .yh-hero__picture {
+    position: absolute !important;
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    z-index: 0 !important;
+  }
+
+  #shopify-section-{{ section.id }} .yh-hero__picture img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+
+    /* CROPS MORE ORCHIDS / RAISES PRODUCTS */
+    object-position: center 88% !important;
+  }
+
+
+  /* ======================================================
+     CONTENT WRAPPER
+     ====================================================== */
+
+  #shopify-section-{{ section.id }} .yh-hero__content {
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    height: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: block !important;
+
+    transform: none !important;
+
+    z-index: 5 !important;
+  }
+
+
+  /* ======================================================
+     TEXT BLOCK ONLY
+
+     This moves:
+     EYEBROW
+     HEADING
+     SUBHEADING
+
+     Buttons are NOT affected.
+     ====================================================== */
+
+  #shopify-section-{{ section.id }}
+  .yh-hero__content
+  .yh-hero__text {
+    position: absolute !important;
+
+    top: auto !important;
+    right: 24px !important;
+    bottom: 190px !important;
+    left: 24px !important;
+
+    width: auto !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: block !important;
+
+    text-align: center !important;
+
+    transform: none !important;
+
+    z-index: 6 !important;
+  }
+
+
+  /* EYEBROW */
+
+  #shopify-section-{{ section.id }}
+  .yh-hero__eyebrow {
+    position: static !important;
+
+    display: block !important;
+
+    margin: 0 0 7px !important;
+    padding: 0 !important;
+
+    font-size: 0.64rem !important;
+    line-height: 1.1 !important;
+    font-weight: 700 !important;
+
+    letter-spacing: 0.12em !important;
+
+    transform: none !important;
+  }
+
+
+  /* HEADING */
+
+  #shopify-section-{{ section.id }}
+  .yh-hero__heading {
+    position: static !important;
+
+    display: block !important;
+
+    width: 100% !important;
+    max-width: 330px !important;
+
+    margin: 0 auto 12px !important;
+    padding: 0 !important;
+
+    font-size: 1.95rem !important;
+    line-height: 1.02 !important;
+
+    letter-spacing: -0.025em !important;
+
+    text-align: center !important;
+
+    transform: none !important;
+  }
+
+
+  /* SUBHEADING */
+
+  #shopify-section-{{ section.id }}
+  .yh-hero__subheading {
+    position: static !important;
+
+    display: block !important;
+
+    width: 100% !important;
+    max-width: 310px !important;
+
+    margin: 0 auto !important;
+    padding: 0 !important;
+
+    font-size: 0.92rem !important;
+    line-height: 1.4 !important;
+
+    text-align: center !important;
+
+    transform: none !important;
+  }
+
+
+  /* ======================================================
+     BUTTON BLOCK ONLY
+
+     Buttons stay at bottom.
+     Completely independent from text.
+     ====================================================== */
+
+  #shopify-section-{{ section.id }}
+  .yh-hero__content
+  .yh-hero__buttons {
+    position: absolute !important;
+
+    top: auto !important;
+    right: 24px !important;
+    bottom: 28px !important;
+    left: 24px !important;
+
+    width: auto !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+
+    gap: 10px !important;
+
+    transform: none !important;
+
+    z-index: 7 !important;
+  }
+
+
+  #shopify-section-{{ section.id }}
+  .yh-hero__buttons
+  .sd-button {
+    width: 100% !important;
+    min-width: 0 !important;
+
+    min-height: 50px !important;
+
+    margin: 0 !important;
+    padding: 13px 22px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    text-align: center !important;
+  }
+
+}
+</style>
